@@ -1,209 +1,189 @@
-# Telegram Mini Apps React Template
+# Telegram Finance Informer
 
-This template demonstrates how developers can implement a single-page
-application on the Telegram Mini Apps platform using the following technologies
-and libraries:
+A Telegram Mini App for investment calculations and financial planning. This application helps users calculate compound interest, plan investments, and analyze potential returns on their financial investments.
 
-- [React](https://react.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [TON Connect](https://docs.ton.org/develop/dapps/ton-connect/overview)
-- [@telegram-apps SDK](https://docs.telegram-mini-apps.com/packages/telegram-apps-sdk/2-x)
-- [Telegram UI](https://github.com/Telegram-Mini-Apps/TelegramUI)
-- [Vite](https://vitejs.dev/)
+## Features
 
-> The template was created using [npm](https://www.npmjs.com/). Therefore, it is
-> required to use it for this project as well. Using other package managers, you
-> will receive a corresponding error.
+🧮 **Investment Calculator**
+- Calculate compound interest with regular monthly contributions
+- Adjustable interest rates from 0.1% to 15% per month
+- Investment period planning (1-12 months)
+- Real-time calculation updates
+- Visual breakdown of invested capital vs. earned interest
 
-## Install Dependencies
+💰 **Financial Planning**
+- Initial capital input with validation
+- Monthly contribution planning
+- Expected return calculations
+- Total investment summary
 
-If you have just cloned this template, you should install the project
-dependencies using the command:
+🎨 **Modern UI/UX**
+- Clean, intuitive interface using Telegram UI components
+- Dark/light theme support
+- Responsive design for all devices
+- Native Telegram Mini App integration
 
-```Bash
+## Tech Stack
+
+This application is built using modern web technologies:
+
+- **Frontend**: [React 18](https://react.dev/) with [TypeScript](https://www.typescriptlang.org/)
+- **Build Tool**: [Vite 6](https://vitejs.dev/) with SWC compiler
+- **UI Library**: [Telegram UI](https://github.com/Telegram-Mini-Apps/TelegramUI) + [Radix UI](https://www.radix-ui.com/)
+- **SDK**: [@telegram-apps SDK](https://docs.telegram-mini-apps.com/packages/telegram-apps-sdk/2-x)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) with BEM methodology
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Testing**: [Vitest](https://vitest.dev/) with React Testing Library
+- **Linting**: ESLint with TypeScript and Prettier integration
+
+> This project uses [npm](https://www.npmjs.com/) as the package manager. Using other package managers may cause compatibility issues.
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18 or higher
+- npm (comes with Node.js)
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd telegram-finance-informer/telegram-app/frontend
+```
+
+2. Install dependencies:
+```bash
 npm install
 ```
 
-## Scripts
+## Available Scripts
 
-This project contains the following scripts:
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Runs the application in development mode (HTTP) |
+| `npm run dev:https` | Runs the application in development mode with SSL certificates |
+| `npm run build` | Creates an optimized production build |
+| `npm run preview` | Previews the production build locally |
+| `npm run lint` | Runs ESLint to check code quality |
+| `npm run lint:fix` | Automatically fixes ESLint issues where possible |
+| `npm run test` | Runs tests in watch mode |
+| `npm run test:run` | Runs all tests once (for CI) |
+| `npm run deploy` | Deploys the application to GitHub Pages |
 
-- `dev`. Runs the application in development mode.
-- `dev:https`. Runs the application in development mode using locally created valid SSL-certificates.
-- `build`. Builds the application for production.
-- `lint`. Runs [eslint](https://eslint.org/) to ensure the code quality meets
-  the required standards.
-- `deploy`. Deploys the application to GitHub Pages.
+## Development
 
-To run a script, use the `npm run` command:
+### Setting up Telegram Bot
 
-```Bash
-npm run {script}
-# Example: npm run build
-```
+Before using this application in Telegram, you need to create a Telegram Bot and Mini App. Follow the [comprehensive guide](https://docs.telegram-mini-apps.com/platform/creating-new-app) for detailed instructions.
 
-## Create Bot and Mini App
+### Running the Application
 
-Before you start, make sure you have already created a Telegram Bot. Here is
-a [comprehensive guide](https://docs.telegram-mini-apps.com/platform/creating-new-app)
-on how to do it.
+The application can be run both inside and outside of Telegram during development:
 
-## Run
+#### HTTPS Development (Recommended)
 
-Although Mini Apps are designed to be opened
-within [Telegram applications](https://docs.telegram-mini-apps.com/platform/about#supported-applications),
-you can still develop and test them outside of Telegram during the development
-process.
-
-To run the application in the development mode, use the `dev` script:
+For full Telegram Mini App functionality, use HTTPS:
 
 ```bash
 npm run dev:https
 ```
 
-> [!NOTE]
-> As long as we use [vite-plugin-mkcert](https://www.npmjs.com/package/vite-plugin-mkcert),
-> launching the dev mode for the first time, you may see sudo password request.
-> The plugin requires it to properly configure SSL-certificates. To disable the plugin, use the `npm run dev` command.
+> **Note**: On first run, you may be prompted for administrator password to install SSL certificates via [vite-plugin-mkcert](https://www.npmjs.com/package/vite-plugin-mkcert).
 
-After this, you will see a similar message in your terminal:
+#### HTTP Development
+
+For basic development without SSL:
 
 ```bash
-VITE v5.2.12  ready in 237 ms
-
-➜  Local:   https://localhost:5173/reactjs-template
-➜  Network: https://172.18.16.1:5173/reactjs-template
-➜  Network: https://172.19.32.1:5173/reactjs-template
-➜  Network: https://192.168.0.171:5173/reactjs-template
-➜  press h + enter to show help
+npm run dev
 ```
 
-Here, you can see the `Local` link, available locally, and `Network` links
-accessible to all devices in the same network with the current device.
+### Accessing the Application
 
-To view the application, you need to open the `Local`
-link (`https://localhost:5173/reactjs-template` in this example) in your
-browser:
+After starting the development server, you'll see output similar to:
 
-![Application](assets/application.png)
+```bash
+VITE v6.2.4 ready in 237 ms
 
-It is important to note that some libraries in this template, such as
-`@telegram-apps/sdk`, are not intended for use outside of Telegram.
+➜  Local:   https://localhost:5173/
+➜  Network: https://192.168.1.100:5173/
+```
 
-Nevertheless, they appear to function properly. This is because the
-`src/mockEnv.ts` file, which is imported in the application's entry point (
-`src/index.tsx`), employs the `mockTelegramEnv` function to simulate the Telegram
-environment. This trick convinces the application that it is running in a
-Telegram-based environment. Therefore, be cautious not to use this function in
-production mode unless you fully understand its implications.
+- **Local**: Access from your development machine
+- **Network**: Access from other devices on the same network (useful for mobile testing)
 
-> [!WARNING]
-> Because we are using self-signed SSL certificates, the Android and iOS
-> Telegram applications will not be able to display the application. These
-> operating systems enforce stricter security measures, preventing the Mini App
-> from loading. To address this issue, refer to
-> [this guide](https://docs.telegram-mini-apps.com/platform/getting-app-link#remote).
+### Development Environment
 
-## Deploy
+The application includes a mock Telegram environment (`src/mockEnv.ts`) that allows development outside of Telegram. This simulates the Telegram SDK functionality for development purposes.
 
-This boilerplate uses GitHub Pages as the way to host the application
-externally. GitHub Pages provides a CDN which will let your users receive the
-application rapidly. Alternatively, you could use such services
-as [Heroku](https://www.heroku.com/) or [Vercel](https://vercel.com).
+> **Warning**: The mock environment should not be used in production. It's automatically disabled when the app runs inside actual Telegram clients.
 
-### Manual Deployment
+## Deployment
 
-This boilerplate uses the [gh-pages](https://www.npmjs.com/package/gh-pages)
-tool, which allows deploying your application right from your PC.
+The application is configured for deployment to GitHub Pages, which provides fast CDN delivery. You can also deploy to other platforms like [Vercel](https://vercel.com) or [Netlify](https://netlify.com).
 
-#### Configuring
+### GitHub Pages Deployment
 
-Before running the deployment process, ensure that you have done the following:
+#### Configuration
 
-1. Replaced the `homepage` value in `package.json`. The GitHub Pages deploy tool
-   uses this value to
-   determine the related GitHub project.
-2. Replaced the `base` value in `vite.config.ts` and have set it to the name of
-   your GitHub
-   repository. Vite will use this value when creating paths to static assets.
+Before deploying, ensure the following configuration is correct:
 
-For instance, if your GitHub username is `telegram-mini-apps` and the repository
-name is `is-awesome`, the value in the `homepage` field should be the following:
-
+1. **package.json**: Update the `homepage` field to match your GitHub Pages URL:
 ```json
 {
-  "homepage": "https://telegram-mini-apps.github.io/is-awesome"
+  "homepage": "https://yourusername.github.io/repository-name"
 }
 ```
 
-And `vite.config.ts` should have this content:
-
+2. **vite.config.ts**: Set the `base` field to your repository name:
 ```ts
 export default defineConfig({
-  base: '/is-awesome/',
+  base: '/repository-name/',
   // ...
 });
 ```
 
-You can find more information on configuring the deployment in the `gh-pages`
-[docs](https://github.com/tschaub/gh-pages?tab=readme-ov-file#github-pages-project-sites).
+#### Manual Deployment
 
-#### Before Deploying
-
-Before deploying the application, make sure that you've built it and going to
-deploy the fresh static files:
-
+1. Build the application:
 ```bash
 npm run build
 ```
 
-Then, run the deployment process, using the `deploy` script:
-
-```Bash
+2. Deploy to GitHub Pages:
+```bash
 npm run deploy
 ```
 
-After the deployment completed successfully, visit the page with data according
-to your username and repository name. Here is the page link example using the
-data mentioned above:
-https://telegram-mini-apps.github.io/is-awesome
+#### Automatic Deployment
 
-### GitHub Workflow
+The project includes a GitHub Actions workflow that automatically deploys when changes are pushed to the `master` branch.
 
-To simplify the deployment process, this template includes a
-pre-configured [GitHub workflow](.github/workflows/github-pages-deploy.yml) that
-automatically deploys the project when changes are pushed to the `master`
-branch.
+To enable automatic deployment:
 
-To enable this workflow, create a new environment (or edit the existing one) in
-the GitHub repository settings and name it `github-pages`. Then, add the
-`master` branch to the list of deployment branches.
+1. Go to your repository settings: `https://github.com/username/repository/settings/environments`
+2. Create or edit the `github-pages` environment
+3. Add `master` to the deployment branches list
 
-You can find the environment settings using this
-URL: `https://github.com/{username}/{repository}/settings/environments`.
+## Project Structure
 
-![img.png](.github/deployment-branches.png)
-
-In case, you don't want to do it automatically, or you don't use GitHub as the
-project codebase, remove the `.github` directory.
-
-### GitHub Web Interface
-
-Alternatively, developers can configure automatic deployment using the GitHub
-web interface. To do this, follow the link:
-`https://github.com/{username}/{repository}/settings/pages`.
-
-## TON Connect
-
-This boilerplate utilizes
-the [TON Connect](https://docs.ton.org/develop/dapps/ton-connect/overview)
-project to demonstrate how developers can integrate functionality related to TON
-cryptocurrency.
-
-The TON Connect manifest used in this boilerplate is stored in the `public`
-folder, where all publicly accessible static files are located. Remember
-to [configure](https://docs.ton.org/develop/dapps/ton-connect/manifest) this
-file according to your project's information.
+```
+src/
+├── components/          # React components
+│   ├── App.tsx         # Main application component
+│   └── Root.tsx        # Application root wrapper
+├── pages/              # Page components
+│   └── IndexPage/      # Investment calculator page
+├── helpers/            # Utility functions
+│   └── numbers.ts      # Number formatting and validation
+├── navigation/         # Routing configuration
+├── css/               # CSS utilities and styles
+├── test/              # Test configuration
+├── index.tsx          # Application entry point
+└── init.ts            # Telegram SDK initialization
+```
 
 ## Useful Links
 

@@ -1,9 +1,9 @@
 {
-  "name": "reactjs-template",
+  "name": "calc-invest",
   "private": true,
   "version": "0.0.1",
   "type": "module",
-  "homepage": "https://calc-invest.github.io/",
+  "homepage": "https://mkremnev.github.io/calc-invest/",
   "scripts": {
     "deploy": "gh-pages -d dist",
     "dev": "vite",

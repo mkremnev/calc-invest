@@ -4,6 +4,7 @@ import { Input } from "@/components/input";
 import { Label } from "@/components/label";
 import { Slider } from "@/components/slider";
 import { TrendingUp, DollarSign, Calendar, Percent } from "lucide-react";
+import { clearMonths, clearNotANumber } from "@/helpers/numbers.ts";
 
 function IndexPage() {
   const [initialCapital, setInitialCapital] = useState<string>("100000");
@@ -77,9 +78,9 @@ function IndexPage() {
               </Label>
               <Input
                 id="initial-capital"
-                type="number"
+                type="text"
                 value={initialCapital}
-                onChange={(e) => setInitialCapital(e.target.value)}
+                onChange={(e) => setInitialCapital(clearNotANumber(e.target.value))}
                 className="border-emerald-200 focus:border-emerald-400 focus:ring-emerald-400"
                 placeholder="100000"
               />
@@ -93,9 +94,11 @@ function IndexPage() {
               </Label>
               <Input
                 id="monthly-contribution"
-                type="number"
+                type="text"
                 value={monthlyContribution}
-                onChange={(e) => setMonthlyContribution(e.target.value)}
+                onChange={(e) => {
+                  setMonthlyContribution(clearNotANumber(e.target.value));
+                }}
                 className="border-emerald-200 focus:border-emerald-400 focus:ring-emerald-400"
                 placeholder="10000"
               />
@@ -111,14 +114,14 @@ function IndexPage() {
                 <Slider
                   value={monthlyRate}
                   onValueChange={setMonthlyRate}
-                  max={10}
+                  max={15}
                   min={0.1}
                   step={0.1}
                   className="w-full"
                 />
                 <div className="flex justify-between text-xs text-emerald-600 mt-1">
                   <span>0.1%</span>
-                  <span>10%</span>
+                  <span>15%</span>
                 </div>
               </div>
             </div>
@@ -131,12 +134,11 @@ function IndexPage() {
               </Label>
               <Input
                 id="months"
-                type="number"
+                type="text"
                 value={months}
-                onChange={(e) => setMonths(e.target.value)}
+                onChange={(e) => setMonths(clearMonths(e.target.value))}
                 className="border-emerald-200 focus:border-emerald-400 focus:ring-emerald-400"
                 placeholder="12"
-                min="1"
               />
             </div>
           </CardContent>
