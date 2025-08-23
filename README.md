@@ -1,6 +1,6 @@
 # Telegram Finance Informer
 
-![Логотип проекта](https://github.com/mkremnev/calc-invest/releases/download/1.0.0/calc-invest-2_imresizer.png)
+![Логотип проекта](https://github.com/mkremnev/calc-invest/releases/download/1.0.0/img-gif.gif)
 
 A Telegram Mini App for investment calculations and financial planning. This application helps users calculate compound interest, plan investments, and analyze potential returns on their financial investments.
 
